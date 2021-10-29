@@ -1,4 +1,5 @@
-###Docker
+### URL PROJECT
+https://felipear2013.pythonanywhere.com/
 
 ### To create Docker Image for our project
 docker-compose run web sh -c "django-admin startproject todolist ."
@@ -12,7 +13,6 @@ docker-compose run web sh -c "python manage.py makemigrations"
 docker-compose run web sh -c "python manage.py migrate"
 
 docker-compose run web sh -c "python manage.py createsuperuser"
-
 
 ### To start a todo application
 docker-compose run web sh -c "python manage.py startapp todo"
