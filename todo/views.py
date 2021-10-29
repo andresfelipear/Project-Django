@@ -19,7 +19,7 @@ def signupuser(request):
                 user = User.objects.create_user(request.POST['username'],"", request.POST['password1'])
                 user.save()
                 login(request,user)
-                return redirect('currenttodos')
+                return redirect('breakfasts')
 
             except IntegrityError:
                 return render(request, 'todo/signup.html', {'form':UserCreationForm(), 'errMsg':"The username already exist. try another one!"})
@@ -39,7 +39,10 @@ def home(request):
 
 def loginuser(request):
     if request.method == 'GET':
-        return render(request, 'todo/login.html', { 'form': AuthenticationForm()})
+        if request.user.is_authenticated:
+            return render(request,'todo/home.html', {"msg":"You are already authenticated!!"})
+        else:
+            return render(request, 'todo/login.html', { 'form': AuthenticationForm()})
     else:
         user = authenticate(
             request,
@@ -49,9 +52,13 @@ def loginuser(request):
 
         if user is None:
             return render(request, 'todo/login.html', {'form': AuthenticationForm(), "errMsg":'Username and password are incorrect'})
-        else:
+        elif user.is_superuser:
             login(request,user)
             return redirect('breakfasts')
+        else:
+            login(request,user)
+            return render(request,'todo/home.html', {"msg":"Thanks for login. You can start buying!"})
+            
 
 @login_required
 def breakfasts(request):

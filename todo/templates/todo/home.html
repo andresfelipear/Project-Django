@@ -60,7 +60,16 @@
 							>Cart(<span id="item_amount"></span>)</a
 						>
 					</li>
+					{% if not user.is_authenticated %}
 					<li class="login"><a href="{% url 'loginuser'%}">Login</a></li>
+					{% else%}
+					<li class="logout">
+						<form action="{% url 'logoutuser' %}" method="post">
+							{% csrf_token %}
+							<button type="submit">Logout</button>
+						  </form>
+					</li>
+					{% endif%}
 				</ul>
 			</nav>
 		</header>
@@ -76,6 +85,13 @@
 			</div>
 		</div>
 		<main>
+			<div class="col-md-5">
+				{% if msg %}
+				<div class="alert alert-danger">
+					{{msg}}
+				</div>
+				{% endif%}
+			</div>
 			<div class="main-photo">
 				<img src="{% static 'images/desayunos-sorpresa-bogota22.jpg'%}" alt="background" />
 			</div>

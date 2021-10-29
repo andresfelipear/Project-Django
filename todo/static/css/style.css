@@ -160,29 +160,47 @@ body{
 nav{
     border-top: 2px solid #E8C8C9;
     display: block;
-    padding: 20px 5vw 20px 10vw;
+    padding: 0 5vw 0 10vw;
     color: white;
     font-size: 20px;
+    height: 60px;
 }
 
 nav ul{
     list-style: none;
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
+    height: 60px;
 }
 nav ul li a{
     text-decoration: none;
     color: white;
-    padding: 20px 10px;
+    height: 60px !important;
+    letter-spacing: 1px;
+    padding: 16px 0;
 }
 
 nav ul li a:hover{
     background-color: #976269;
+    height: 60px !important;
 }
 
 header nav .login a{
     color:var(--maincolor);
     font-weight: 480;
+
+}
+
+header nav .logout button{
+    font-family: 'Akronim', cursive;
+    color:white;
+    background-color: var(--maincolor);
+    font-size: 15px;
+    border-radius: 12px;
+    height: 40px;
+    padding: 0 10px;
+    letter-spacing: 2px;
 
 }
 
