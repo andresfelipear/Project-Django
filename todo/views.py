@@ -3,8 +3,8 @@ from django.contrib.auth.forms import UserCreationForm,  AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
-from .forms import TodoForm
-from .models import Todo
+from .forms import BreakfastForm
+from .models import Todo, Breakfast
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
@@ -51,60 +51,48 @@ def loginuser(request):
             return render(request, 'todo/login.html', {'form': AuthenticationForm(), "errMsg":'Username and password are incorrect'})
         else:
             login(request,user)
-            return redirect('currenttodos')
+            return redirect('breakfasts')
 
 @login_required
-def currenttodos(request):
-    todos = Todo.objects.filter(user=request.user, datecompleted__isnull=True)
-    return render(request, 'todo/currenttodos.html', {'todos':todos})
+def breakfasts(request):
+    breakfasts = Breakfast.objects.filter(user=request.user)
+    return render(request, 'todo/breakfasts.html', {'todos':breakfasts})
 
 @login_required
-def createtodos(request):
+def create(request):
     if request.method == 'GET':
-        return render(request, 'todo/createtodo.html', { 'form': TodoForm()})
+        return render(request, 'todo/create.html', { 'form': BreakfastForm()})
     else:
         try:
-            form = TodoForm(request.POST)
-            newtodo = form.save(commit=False)
+            form = BreakfastForm(request.POST)
+            newtodo = form.save()
             newtodo.user = request.user
             newtodo.save()
-            return redirect('currenttodos')
+            return redirect('breakfasts')
         except ValueError:
-            render(request, "todo/createtodo.html",{ 'form': TodoForm(), 'errMsg':'Bad data passed in. try again'})
+            render(request, "todo/create.html",{ 'form': BreakfastForm(), 'errMsg':'Bad data passed in. try again'})
 
 @login_required
-def viewtodo(request, todo_id):
-    todo = get_object_or_404(Todo,pk=todo_id,user=request.user)
+def view(request, breakfast_id):
+    breakfast = get_object_or_404(Breakfast,pk=breakfast_id,user=request.user)
     if request.method == "GET":
-        form = TodoForm(request.POST, instance=todo) ####
-        return render(request, 'todo/viewtodo.html',{'todo':todo, 'form':form})
+        form = BreakfastForm(request.POST, instance=breakfast) ####
+        return render(request, 'todo/view.html',{'breakfast':breakfast, 'form':form})
     else:
         try:
-            form = TodoForm(request.POST, instance=todo)
+            form = BreakfastForm(request.POST, instance=breakfast)
             form.save()
-            return redirect('currenttodos')
+            return redirect('breakfasts')
         except ValueError:
-            return render(request, 'todo/viewtodo.html', {'todo':todo, 'form':form, 'errMsg':'Bad information...'} )
+            return render(request, 'todo/view.html', {'breakfast':breakfast, 'form':form, 'errMsg':'Bad information...'} )
+
 
 @login_required
-def completedtodos(request):
-    todos = Todo.objects.filter(user=request.user, datecompleted__isnull=False)
-    return render(request, 'todo/completedtodos.html', {'todos':todos})
-
-@login_required
-def completetodo(request, todo_id):
-    todo = get_object_or_404(Todo,pk=todo_id,user=request.user)
+def delete(request, breakfast_id):
+    breakfast = get_object_or_404(Breakfast,pk=breakfast_id,user=request.user)
     if request.method == 'POST':
-        todo.datecompleted = timezone.now()
-        todo.save()
-        return redirect('currenttodos')
-
-@login_required
-def deletetodo(request, todo_id):
-    todo = get_object_or_404(Todo,pk=todo_id,user=request.user)
-    if request.method == 'POST':
-        todo.delete()
-        return redirect('currenttodos')
+        breakfast.delete()
+        return redirect('breakfasts')
 
 def handler404(request, exception):
     return render(request, '404.html', status=404)

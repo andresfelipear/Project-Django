@@ -1,18 +1,240 @@
-{% extends 'base.html' %}
 {% load static %}
 
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Akronim&family=Ephesis&display=swap"
+			rel="stylesheet"
+		/>
+		<title>DesayunosBogota22</title>
+	</head>
 
-{% block content%}
+	<body>
+		<header>
+			<div class="head pink-dark">
+				<ul>
+					<li>
+						<div>
+							<strong> Call Us</strong>
 
-<div class="row justify-content-center mt-5">
-    <div class="col-md-7 text-center">
-        <img src="{% static 'img1.gif'%}" width="400" height="400" alt="igm1" class="d-inline-block align-top">
-    
-        <br><br>
-        <h1>Welcome to TodoList</h1>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit repudiandae atque excepturi, velit magnam commodi quam. Quos vitae a cupiditate ex nemo maiores aliquam illo, nobis placeat similique sequi eveniet.</p>
-        <a href="{% url 'signupuser' %}" class="btn btn-primary btn-lg"> Start</a>
-    </div>
-</div>
-
-{% endblock%}
+							<br />
+							<div class="info">+57 (311)890-0572 Bogota</div>
+						</div>
+						<div>
+							<strong>Bogota</strong>
+							<br />
+							<div class="info">
+								<img src="{% static 'images/logo-whatsapp.png'%}" alt="" />
+								+57 (311)890-0572
+							</div>
+						</div>
+					</li>
+					<li>
+						<strong>Schedule</strong>
+						<br />
+						<div class="info">M-F 8am - 6pm / Saturday 9am - 3pm</div>
+					</li>
+					<li>
+						<strong>Delivery</strong>
+						<br />
+						<div class="info">Sunday to Sunday</div>
+					</li>
+				</ul>
+			</div>
+			<div class="logo">
+				<img src="{% static 'images/logo.png'%}" alt="logo" />
+				<!-- <img id="button-cart" src="images/cart.png" alt="cart" /> -->
+			</div>
+			<nav class="pink-base">
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="#favorite-products">Breakfasts</a></li>
+					<li><a href="#footer">Contact</a></li>
+					<li>
+						<a href="#" id="button-cart"
+							>Cart(<span id="item_amount"></span>)</a
+						>
+					</li>
+					<li class="login"><a href="{% url 'loginuser'%}">Login</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div id="cart">
+			<div class="items" id="items"></div>
+			<div class="total">
+				<h4>Total</h4>
+				<p id="total-value"></p>
+			</div>
+			<div class="btns-clear-checkout">
+				<button class="btn-clear">clear cart</button>
+				<button class="btn-checkout">checkout</button>
+			</div>
+		</div>
+		<main>
+			<div class="main-photo">
+				<img src="{% static 'images/desayunos-sorpresa-bogota22.jpg'%}" alt="background" />
+			</div>
+			<div class="favorite-products" id="favorite-products">
+				<h4>FAVORITE</h4>
+				<h2>PRODUCTS</h2>
+				<div class="breakfasts">
+					<div class="breakfast">
+						<img src="{% static 'images/breakfasts/breakfast3.png'%}" alt="breakfast3" />
+						<h4 class="item1-title">BREAKFAST- MINI ARCOIRIS</h4>
+						<h4 class="item1-value">$75.000 COP</h4>
+						<span>Add to the cart</span>
+					</div>
+					<div class="breakfast">
+						<img src="{% static 'images/breakfasts/breakfast5.png'%}" alt="breakfast5" />
+						<h4>BREAKFAST- FANTASIA</h4>
+						<h4>$75.000 COP</h4>
+						<span>Add to the cart</span>
+					</div>
+					<div class="breakfast">
+						<img src="{% static 'images/breakfasts/breakfast7.png'%}" alt="breakfast7" />
+						<h4>BREAKFAST- PRIMAVERA</h4>
+						<h4>$80.000 COP</h4>
+						<span>Add to the cart</span>
+					</div>
+					<div class="breakfast">
+						<img src="{% static 'images/breakfasts/breakfast10.png'%}" alt="breakfast1" />
+						<h4>BREAKFAST- BALDE PLUS</h4>
+						<h4>$95.000 COP</h4>
+						<span>Add to the cart</span>
+					</div>
+					<div class="breakfast">
+						<img src="{% static 'images/breakfasts/breakfast11.png'%}" alt="breakfast11" />
+						<h4>BREAKFAST- CAJITA ROSAS</h4>
+						<h4>$80.000 COP</h4>
+						<span>Add to the cart</span>
+					</div>
+					<div class="breakfast">
+						<img src="{% static 'images/breakfasts/breakfast12.png'%}" alt="breakfast12" />
+						<h4>BREAKFAST- ARREGLO DE ROSAS</h4>
+						<h4>$85.000 COP</h4>
+						<span>Add to the cart</span>
+					</div>
+					<div class="breakfast">
+						<img src="{% static 'images/breakfasts/breakfast15.png'%}" alt="breakfast15" />
+						<h4>BREAKFAST- CORAZON PREMIUM</h4>
+						<h4>$100.000 COP</h4>
+						<span>Add to the cart</span>
+					</div>
+					<div class="breakfast">
+						<img src="{% static 'images/breakfasts/breakfast16.png'%}" alt="breakfast16" />
+						<h4>BREAKFAST- GOLDEN WINE</h4>
+						<h4>$100.000 COP</h4>
+						<span>Add to the cart</span>>
+					</div>
+					<div class="breakfast">
+						<img src="{% static 'images/breakfasts/breakfast19.png'%}" alt="breakfast19" />
+						<h4>BREAKFAST- ARCOIRIS</h4>
+						<h4>$105.000 COP</h4>
+						<span>Add to the cart</span>
+					</div>
+					<div class="breakfast">
+						<img src="{% static 'images/breakfasts/breakfast20.PNG'%}" alt="breakfast20" />
+						<h4>BREAKFAST- DULCE FANTASIA</h4>
+						<h4>$120.000 COP</h4>
+						<span>Add to the cart</span>
+					</div>
+					<div class="breakfast">
+						<img src="{% static 'images/breakfasts/breakfast23.png'%}" alt="breakfast23" />
+						<h4>BREAKFAST- SANTORINI 2.0</h4>
+						<h4>$145.000 COP</h4>
+						<span>Add to the cart</span>
+					</div>
+					<div class="breakfast">
+						<img src="{% static 'images/breakfasts/breakfast24.png'%}" alt="breakfast24" />
+						<h4>BREAKFAST- FLOR CARIÑOSA</h4>
+						<h4>$145.000 COP</h4>
+						<span>Add to the cart</span>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer id="footer">
+			<div class="section1 pink-base">
+				<h4>Our Payment Methods</h4>
+				<img src="{% static 'images/medios-de-pago.png'%}" alt="medios-pago" />
+			</div>
+			<div class="section2 pink-dark">
+				<div class="sub-section1">
+					<h4>Account Details</h4>
+					<div class="bank1">
+						<img src="{% static 'images/logo-bancolombia.png'%}" alt="bancolombia" />
+						Ahorros No. XXX XXX XXX XX
+						<br />
+						Titular: Andres Arevalo
+					</div>
+					<div class="bank2">
+						<img src="{% static 'images/logo-davivienda.png'%}" alt="bancolombia" />
+						Ahorros No. XXX XXX XXX XX
+						<br />
+						Titular: Andres Arevalo
+					</div>
+				</div>
+				<div class="sub-section2">
+					<h4><a href="">Customer Service</a></h4>
+				</div>
+				<div class="sub-section3">
+					<h4>Contact Us</h4>
+					desayunosbogota22@gmail.com <br />
+					andresfelipear@gmail.com
+				</div>
+				<div class="sub-section4">
+					<h4><a href="">Coverage Map</a></h4>
+					<div class="nets">
+						<a
+							href="https://www.facebook.com/Desayunosbogota22/reviews"
+							target="_blank"
+						>
+							<svg
+								style="height: 24px; width: 24px"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 512 512"
+							>
+								<path
+									d="M256-6.4c-141.385 0-256 114.615-256 256s114.615 256 256 256 256-114.615 256-256-114.615-256-256-256zm64.057 159.299h-49.041c-7.42 0-14.918 7.452-14.918 12.99v19.487h63.723c-2.081 28.41-6.407 64.679-6.407 64.679h-57.566v159.545h-63.929v-159.545h-32.756v-64.474h32.756v-33.53c0-8.098-1.706-62.336 70.46-62.336h57.678v63.183z"
+									fill="white"
+								></path></svg
+						></a>
+						<a
+							href="https://www.instagram.com/desayunosbogota22/"
+							target="_blank"
+						>
+							<svg
+								style="height: 24px; width: 24px"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 512 512"
+							>
+								<path
+									d="M375.3,197.7L375.3,197.7c-0.6-11.5-2.2-20.4-5-27.1c-2.5-6.7-5.7-11.8-10.9-17c-5.9-5.5-10.5-8.4-16.9-10.9 c-4.1-1.8-11.3-4.3-27.1-5c-15.4-0.7-20.4-0.7-58.8-0.7s-43.4,0-58.8,0.7c-11.5,0.6-20.4,2.2-27,5c-6.7,2.5-11.8,5.7-17,10.9 c-5.5,5.9-8.4,10.5-10.9,16.9c-1.8,4.1-4.3,11.3-5,27.1c-0.7,15.4-0.7,20.4-0.7,58.8s0,43.4,0.7,58.8c0.4,14.3,2.9,22,5,27.1 c2.5,6.7,5.7,11.8,10.9,17c5.9,5.5,10.5,8.4,16.9,10.9c4.1,1.8,11.3,4.3,27.1,5c15.4,0.7,20.4,0.7,58.8,0.7s43.4,0,58.8-0.7 c11.5-0.6,20.4-2.2,27-5c6.7-2.5,11.8-5.7,17-10.9c5.5-5.9,8.4-10.5,10.9-16.9c1.8-4.1,4.3-11.3,5-27.1l0.2-3.4 c0.6-13.1,0.9-19.7,0.5-55.5C376,218,376,213.1,375.3,197.7z M351.4,178.7c0,9.4-7.7,17.1-17.1,17.1c-9.4,0-17.1-7.7-17.1-17.1 c0-9.4,7.7-17.1,17.1-17.1C343.7,161.6,351.4,169.3,351.4,178.7z M256.5,330.6c-40.9,0-74.1-33.2-74.1-74.1 c0-40.9,33.2-74.1,74.1-74.1c40.9,0,74.1,33.2,74.1,74.1C330.6,297.4,297.4,330.6,256.5,330.6z"
+									fill="white"
+								></path>
+								<ellipse
+									transform="matrix(0.9732 -0.2298 0.2298 0.9732 -52.0702 65.7936)"
+									cx="256.5"
+									cy="256.5"
+									rx="48.9"
+									ry="48.9"
+									fill="currentColor"
+								></ellipse>
+								<path
+									d="M437.9,75.1C389.4,26.7,325,0,256.5,0C188,0,123.6,26.7,75.1,75.1S0,188,0,256.5C0,325,26.7,389.4,75.1,437.9 C123.6,486.3,188,513,256.5,513c68.5,0,132.9-26.7,181.4-75.1C486.3,389.4,513,325,513,256.5C513,188,486.3,123.6,437.9,75.1z  M400.8,316.4L400.8,316.4c-0.6,14.1-2.7,24.7-6.8,35.3c-4.2,10.5-9.2,18.2-16.7,25.6c-8,8-16,13.2-25.6,16.7 c-10.4,4-21.3,6.1-35.3,6.8c-15.4,0.7-20.5,0.7-59.9,0.7c-39.3,0-44.4,0-59.9-0.7c-14.1-0.6-24.7-2.6-35.3-6.8 c-10.5-4.2-18.2-9.2-25.6-16.7c-8.1-8.1-13.2-16-16.7-25.6c-4-10.4-6.1-21.3-6.8-35.3c-0.7-15.4-0.7-20.5-0.7-59.9 c0-39.3,0-44.4,0.7-59.9c0.6-14.1,2.6-24.7,6.8-35.3c3.9-9.7,9-17.6,16.7-25.6c8.1-8.1,16-13.2,25.6-16.7c10.4-4,21.3-6.1,35.3-6.8 c15.4-0.7,20.5-0.7,59.9-0.7c39.3,0,44.4,0,59.9,0.7c14.1,0.6,24.7,2.6,35.3,6.8c10.5,4.2,18.1,9.2,25.6,16.7 c8,8.1,13.2,16,16.7,25.6c4,10.4,6.1,21.3,6.8,35.3c0.7,15.4,0.7,20.5,0.7,59.9C401.5,295.8,401.5,300.9,400.8,316.4z"
+									fill="white"
+								></path>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script src="{% static 'js/main.js'%}"></script>
+	</body>
+</html>

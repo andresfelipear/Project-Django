@@ -1,7 +1,7 @@
 from django.forms import ModelForm, fields
-from .models import Todo
+from .models import Breakfast, Todo
 
-class TodoForm(ModelForm):
+class BreakfastForm(ModelForm):
     class Meta:
-        model = Todo
-        fields = ['title','memo','important']
+        model = Breakfast
+        fields = ['name','price']

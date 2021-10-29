@@ -1,40 +1,45 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block extrastyles %}
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'css/signin.css' %}" />
+{% endblock %}
+
 
 {% block content %}
 
-<div class="row justify-content-center mt-5">
-    <div class="col-md-5">
-        <h2>Login</h2>
-    </div>
-</div>
+        
+    
+        <form class="form" method="post" action="">
+            {% csrf_token%}
 
-<div class="row justify-content-center mt-5">
-    <div class="col-md-5">
-        {% if errMsg %}
-            <div class="alert alert-danger">
-                {{errMsg}}
+            <div class="col-md-5">
+                {% if errMsg %}
+                    <div class="alert alert-danger">
+                        {{errMsg}}
+                    </div>
+                {% endif %}
             </div>
-        {% endif %}
-    </div>
 
-    <form method="post" action="">
-        {% csrf_token%}
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input required type="text" class="form-control" name="username" id="username">
-        </div>
+            <h1 class="h3 mb-3 fw-normal">Please Login</h1>
+            <div class="form-floating">
+                <input required type="text" class="form-control" name="username" id="username">
+                <label for="username">Username</label>
+            </div>
+    
+            <div class="form-floating">
+                <input required type="password" class="form-control" name="password1" id="password1" >
+                <label for="password1">Password</label>
+            </div>
+    
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
 
-        <div class="form-group">
-            <label for="password1">Password</label>
-            <input required type="password" class="form-control" name="password1" id="password1" >
-        </div>
+            <div class="text-center">
+                Need an account? <a href="{% url 'signupuser' %}">Sign Up</a>
+            </div>
+        </form>
+    
 
-        <button class="btn btn-primary mt-4" type="submit">Login</button>
-    </form>
 
-    <div class="text-center">
-        Need an account? <a href="{% url 'signupuser' %}">Sign Up</a>
-    </div>
-</div>
 
 {% endblock %}

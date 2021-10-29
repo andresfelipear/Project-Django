@@ -28,13 +28,11 @@ urlpatterns = [
     
     #todos
     
-    path('current/', views.currenttodos, name='currenttodos'),
-    path('create/', views.createtodos, name='createtodos'),
-    path('completed/', views.completedtodos, name='completedtodos'),
+    path('breakfasts/', views.breakfasts, name='breakfasts'),
+    path('create/', views.create, name='create'),
     #<int:tod_id> representation of todo's id or primary key
-    path('todo/<int:todo_id>', views.viewtodo, name='viewtodo'),
-    path('todo/<int:todo_id>/complete', views.completetodo, name='completetodo'),
-    path('todo/<int:todo_id>/delete',views.deletetodo, name="deletetodo"),
+    path('todo/<int:breakfast_id>', views.view, name='view'),
+    path('todo/<int:breakfast_id>/delete',views.delete, name="delete"),
     
     
 ]

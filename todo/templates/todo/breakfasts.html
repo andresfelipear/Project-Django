@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-10">
+        {% if todos %}
+            <h1>Breakfasts List ({{todos.count}}) </h1>
+        {% else %}
+            <h1>Current Todos</h1>
+        {% endif %}
+    </div>
+</div>
+<div class="row justify-content-center mt-5">
+    <div class="col-md-10">
+        {% if todos %}
+            <div class="list-group">
+                {% for breakfast in todos %}
+                    <a href="{% url 'view' breakfast.id %}" class="list-group-item list-group-item-action">
+                        <b>{{breakfast.name}}</b>- ${{breakfast.price}}            
+                    </a>
+                {% endfor%}    
+            </div>
+        {% else %}
+            <div class="text-center">
+                <h2>Looks like you don't have any breakfast!</h2>
+                <br>
+                <a href="{% url 'create' %} " class="btn btn-primary">New Breakfast</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+nav{
+    background-color: #905960;
+    color:white !important;
+}
+
+nav a{
+    color:white !important;
+}
+
+nav form button{
+    border-radius: 12px;
+    border: 1px solid #F7D0D5;
+    color: #905960;
+
+}
+
+#navbarNav{
+    display: flex;
+    justify-content: space-between;
+
+}
