@@ -71,7 +71,7 @@ def create(request):
         return render(request, 'todo/create.html', { 'form': BreakfastForm()})
     else:
         try:
-            form = BreakfastForm(request.POST)
+            form = BreakfastForm(request.POST, request.FILES)
             newtodo = form.save()
             newtodo.user = request.user
             newtodo.save()
@@ -83,11 +83,14 @@ def create(request):
 def view(request, breakfast_id):
     breakfast = get_object_or_404(Breakfast,pk=breakfast_id,user=request.user)
     if request.method == "GET":
-        form = BreakfastForm(request.POST, instance=breakfast) ####
+        form = BreakfastForm({'breakfast':breakfast
+        })
         return render(request, 'todo/view.html',{'breakfast':breakfast, 'form':form})
     else:
         try:
-            form = BreakfastForm(request.POST, instance=breakfast)
+            if not request.FILES:
+                request.FILES['image'] = breakfast.image
+            form = BreakfastForm(request.POST,request.FILES, instance=breakfast)
             form.save()
             return redirect('breakfasts')
         except ValueError:

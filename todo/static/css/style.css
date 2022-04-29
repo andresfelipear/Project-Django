@@ -8,6 +8,7 @@
     background-color: #F7D0D5;
 }
 
+
 .pink-dark{
     background-color: #905960;
 }
@@ -25,7 +26,7 @@ body{
 }
 
 .logo{
-    background: url(../images/background1.PNG) repeat top right;
+    background: url("../images/background1.png") repeat top right;
     display: flex;
     padding:  3px 5vw 3px 10vw;
     

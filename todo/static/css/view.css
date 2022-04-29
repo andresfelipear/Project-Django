@@ -31,3 +31,10 @@
 .form button{
     margin-top: 10px;
 }
+
+
+.fileLabel{
+    font-style: italic;
+    font-weight: 0.7em;
+    text-align: left;
+}

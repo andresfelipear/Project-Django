@@ -18,7 +18,8 @@ class Todo(models.Model):
 class Breakfast(models.Model):
     name = models.CharField(max_length=100)
     price= models.CharField(max_length=100)
-    image=models.FileField(upload_to='todo/static/breakfasts')
+    # 'todo/static/breakfasts'
+    image=models.FileField(upload_to='images/', blank=True,null=True)
     created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 

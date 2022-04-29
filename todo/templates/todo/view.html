@@ -34,7 +34,10 @@
                 <label for="price">Price</label>
             </div>
             <div class="form-group">
-                <input type="file" class="form-control" name="image" id="image">
+                <input type="file" class="form-control" name="image" id="image" accept="image/*">
+                {% if breakfast.image%}
+                <label class="fileLabel" for="file">Current: {{breakfast.image.url}}</label>
+                {% endif%}
             </div>
             <br>
             <button class="btn btn-primary" type="submit">Save</button>
